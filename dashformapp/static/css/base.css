@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #D54942;
     font-weight: bold;
     font-size: 32px;
-    letter-spacing: 3.9pt;
+    letter-spacing: 5.1pt;
     display: inline-block;
     margin: 0px;
 }
@@ -146,4 +146,16 @@ label {
 
 article {
     padding-top: 6rem;
+}
+
+.vertical.menu {
+    height: 100vh;
+    margin-top: -1px !important;
+}
+
+.ui.menu:first-child, .ui.menu:last-child {
+    border-radius: 0px !important;
+}
+.ui.menu:first-child {
+    margin-top: -1px;
 }
