@@ -148,14 +148,18 @@ article {
     padding-top: 6rem;
 }
 
-.vertical.menu {
+#sidebar .vertical.menu {
     height: 100vh;
     margin-top: -1px !important;
 }
 
-.ui.menu:first-child, .ui.menu:last-child {
+#sidebar .ui.menu:first-child, #sidebar .ui.menu:last-child {
     border-radius: 0px !important;
 }
-.ui.menu:first-child {
+#sidebar .ui.menu:first-child {
     margin-top: -1px;
+}
+
+.pull.right {
+    float: right;
 }
