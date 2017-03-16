@@ -1,0 +1,149 @@
+body, html {
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+    font-family: 'Source Sans Pro', 'Open Sans', 'Roboto', 'HeleveticaNeue', 'Helevetica', 'Arial', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Sans Pro', 'Open Sans', 'Roboto', 'HeleveticaNeue', 'Helevetica', 'Arial', sans-serif;
+}
+
+.logo {
+    color: #D54942;
+    font-weight: bold;
+    font-size: 32px;
+    letter-spacing: 3.9pt;
+    display: inline-block;
+    margin: 0px;
+}
+
+.gutter0 {
+    padding: 30px 60px;
+}
+
+.headline {
+    font-size: 62px;
+    margin-top: 150px;
+    margin-bottom: 0px;
+    letter-spacing: 1.9px;
+}
+
+.subheading {
+    font-weight: normal;
+    color: #555;
+    margin-top: 5px;
+}
+
+.btn {
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    color: #d54942;
+    border: 1px solid #d54942;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 10px 32px;
+    cursor: pointer;
+}
+
+.btn.btn-cta {
+    font-size: 24px;
+    padding: 15px 45px;
+    margin: 0px auto;
+}
+
+.cta-wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+header {
+    min-height: 50vh;
+}
+
+
+@media screen and (max-width: 600px){
+    .gutter0 {
+        padding: 25px !important;
+    }
+    
+}
+.signup-email {
+    font-size: 24px;
+    padding: 4px 7px;
+    border-radius: 5px;
+    outline: none;
+    
+}
+
+label {
+    display: block;
+}
+
+.btn-cta-submit {
+    font-size: 18px;
+    margin: 0px auto;
+    margin-top: 15px;
+    background-color: white;
+}
+
+.centered {
+    text-align: center;
+}
+
+.points {
+    background-color: #dee4f0;    
+}
+
+
+.card {
+    display: inline-block;
+    border-radius: 5px;
+    /* border: 1px solid #ccc; */
+    margin: 10px 5px;
+    width: 250px;
+    height: 150px;
+    padding: 15px 30px;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    margin: 0px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.card p {
+    margin: 0px;
+    color: #666;
+    display: inline;
+}
+.card-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cards {
+    	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-top: 15px;
+	padding: 1.5%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.wwyb {
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 1.2px
+}
+
+article {
+    padding-top: 6rem;
+}

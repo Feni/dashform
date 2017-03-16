@@ -1,0 +1,102 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <title>Build your web app with dashform</title>
+        <meta name="description" content="dashform | Create custom, interactive web applications for data management">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+        <link href="{% static "css/base.css" %}" rel="stylesheet"> 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" rel="stylesheet">
+    </head>
+    <body>
+
+
+  <nav class="ui huge menu top attached">
+    <a class="header item" href="/"><h1 class="logo">DASHFORM</h1></a>
+    <a class="item center aligned header" href="#">Collections</a>
+    
+    <a class="ui simple dropdown item right floated" id="settingsMenu" href="#">Profile<i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item">Logout</div>
+        <div class="item">Feedback</div>
+      </div>
+    </a>
+  </nav>
+
+
+  <div class="ui grid bottom attached">
+    <div class="row">
+
+      <div class="ui four wide column" id="sidebar">
+        <div class="ui large vertical menu">
+          <a class="item" href="#">Project</a>
+          <a class="item" href="#">Breadcrumb</a>
+          <a class="item" href="#">Breadcrumb</a>
+          <a class="item" href="#">Breadcrumb</a>
+          <a class="item" href="#">Breadcrumb</a>
+        </div>
+      </div>
+
+
+      
+      <article class="ui ten wide column" id="content">
+        <div class="ui grid">
+          <div class="row">
+
+
+            <div class="eight wide column">
+              <h1 class="ui header">Content in Current View</h1>
+            </div>
+            <div class="eight wide column right aligned">
+              <button class="ui button"><i class="plus icon"></i> Add Field</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <p>Content.</p>
+              <p>Lorem ipsum dolor sit amet, integre convenire ex vis, eam saepe quaeque cu. Scripta repudiare vix at, ea qui nonumy laudem persequeris, no vim hinc atqui viris. At vocent convenire duo, mei assum tantas suscipiantur ad. Mei at natum offendit adipiscing, ne qui labore suavitate. An nemore option eam, eos petentium vulputate te.
+
+At pri natum errem dicant, sit lorem accommodare voluptatibus no. Nisl aeterno cu nec. Nec ad summo minim deterruisset, est semper omnium scripta te. Ex mei vide maluisset molestiae, te deleniti intellegebat eum.
+
+Cum verear postulant cu, ei nec hinc postea percipit, nisl rebum civibus in quo. Eam id diam inani. Et eligendi periculis duo, magna nemore pro ex. Qui alia vitae at. In mea vocibus omnesque expetenda.
+
+Ne cum ferri mediocritatem, no sed adhuc iudico. Est lorem saepe eruditi an, ius saepe laoreet scripserit ex. Ea per feugait assentior deseruisse, ei phaedrum eloquentiam delicatissimi ius. Vel et justo ceteros. Postea sadipscing no mea, id stet senserit nec.
+</p>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+
+    </div>
+  </div>
+
+
+
+<!--        
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93665513-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+-->
+
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+
+    </body>
+</html>
