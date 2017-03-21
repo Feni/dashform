@@ -29,3 +29,5 @@ GRANT ALL PRIVILEGES ON DATABASE dashform TO dashuser;
 \list show databses
 \dt display tables
 \connect database_name - use db
+
+sudo su - postgres
