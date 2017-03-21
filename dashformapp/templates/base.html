@@ -1,4 +1,6 @@
 {% load static from staticfiles %}
+{% load datautils %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,9 +50,10 @@
         <div class="ui grid">
           <div class="row">
 
+            {{ dataview.collection.name }}
 
             <div class="eight wide column">
-              <h1 class="ui header">My Table</h1>
+              <h1 class="ui header">{{ dataview.name }}</h1>
             </div>
             <div class="eight wide column right aligned">
               <button class="ui button"><i class="edit icon"></i> Edit Fields</button>
@@ -62,27 +65,19 @@
               <table class="ui basic table">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Status</th>
-                    <th>Notes</th>
+                    {% for field in dataview.fields_set.all %}
+                      <th>{{ field.name }}</th>
+                    {% endfor %}
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>John</td>
-                    <td>Approved</td>
-                    <td>None</td>
-                  </tr>
-                  <tr>
-                    <td>Jamie</td>
-                    <td>Approved</td>
-                    <td>Requires call</td>
-                  </tr>
-                  <tr>
-                    <td>Jill</td>
-                    <td>Denied</td>
-                    <td>None</td>
-                  </tr>
+                  {% for data in dataview.collection.data_set.all %}
+                    <tr>
+                      {% for field in dataview.fields_set.all %}
+                        <td>{{ data.json|getitem:field }}</td>
+                      {% endfor %}
+                    </tr>
+                  {% endfor %}
                 </tbody>
               </table>
 

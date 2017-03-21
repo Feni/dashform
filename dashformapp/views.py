@@ -4,8 +4,8 @@ from .models import *
 
 # Create your views here.
 def hello(request):
-	# return HttpResponse("Hello World")
-	return render(request, 'index.html')
+	dataview = DataViews.objects.first()
+	return render(request, 'index.html', {'dataview': dataview})
 
 # db.schema_view.insert_one({"notebook": "testnb", "view": "testview", "fields":["fieldone"]})
 def addField(request):
