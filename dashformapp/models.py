@@ -2,15 +2,15 @@ from django.db import models
 from django.contrib.postgres.fields import JSONField
 
 # Create your models here.
-class Collections:    
+class Collections(models.Model):
     name = models.CharField(max_length=60)
 
 # Essentially a table - a view into a slice of data
-class DataViews:    
+class DataViews(models.Model):
     name = models.CharField(max_length=60)    
     collection = models.ForeignKey("Collections")
 
-class Fields:
+class Fields(models.Model):
     TYPE_BOOLEAN = "BOOL"
     TYPE_NUMBER = "NUM"
     TYPE_TEXT = "TXT"
@@ -26,6 +26,6 @@ class Fields:
     view = models.ForeignKey("DataViews")
     hidden = models.BooleanField(default=False)
 
-class Data:
+class Data(models.Model):
     collection = models.ForeignKey("Collections")
     json = JSONField()
