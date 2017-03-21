@@ -20,4 +20,6 @@ from dashformapp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', views.hello, name='hello'),
+    url(r'^api/fields', views.addField, name='addField'),
+    
 ]

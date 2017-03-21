@@ -1,0 +1,31 @@
+Install mongo
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+# For ubuntu 16.04
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
+
+-----------
+Forget mongo, installing postgres
+
+createuser --interactive
+role: dashform
+superuser: y
+createdb dashform
+
+in your user
+sudo adduser dashform
+password: 
+fd9
+
+or in ssh
+create user dashuser with password ''
+
+ALTER ROLE dashuser SET client_encoding TO 'utf8';
+ALTER ROLE dashuser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE dashuser SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE dashform TO dashuser;
+
+\list show databses
+\dt display tables
+\connect database_name - use db
