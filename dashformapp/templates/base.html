@@ -1,39 +1,43 @@
 {% load static from staticfiles %}
-{% load datautils %}
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-        <title>Build your web app with dashform</title>
-        <meta name="description" content="dashform | Create custom, interactive web applications for data management">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" rel="stylesheet">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+      
+      <title>{% block title %}Build your web app with dashform{% endblock %}</title>
 
-        <link href="{% static "css/base.css" %}" rel="stylesheet"> 
-    </head>
-    <body>
+      <meta name="description" content="{% block description %}dashform | Create custom, interactive web applications for data management{% endblock %}">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      {% block extra_meta %}{% endblock %}
+      
+      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" rel="stylesheet">
+      <link href="{% static "css/base.css" %}" rel="stylesheet"> 
 
-  <nav class="ui huge menu top attached">
-    <a class="header item" href="/"><h1 class="logo">DASHFORM</h1></a>
-    <a class="item center aligned header" href="#">Collections</a>
-    
-    <a class="ui simple dropdown item right floated" id="settingsMenu" href="#">Profile<i class="dropdown icon"></i>
-      <div class="menu">
-        <div class="item">Logout</div>
-        <div class="item">Feedback</div>
-      </div>
-    </a>
-  </nav>
+      {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+  {% block navbar %}
+    <nav class="ui huge menu top attached">
+      <a class="header item" href="/"><h1 class="logo">DASHFORM</h1></a>
+      <a class="item center aligned header" href="#">Collections</a>
+      
+      <a class="ui simple dropdown item right floated" id="settingsMenu" href="#">Profile<i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item">Logout</div>
+          <div class="item">Feedback</div>
+        </div>
+      </a>
+    </nav>
+  {% endblock %}
 
-
+  {% block grid %}
   <div class="ui grid bottom attached">
     <div class="row">
 
+    {% block sidebar %}
       <div class="ui four wide column" id="sidebar">
         <div class="ui large vertical menu">
           <a class="item" href="#">Project</a>
@@ -43,106 +47,19 @@
           <a class="item" href="#">Breadcrumb</a>
         </div>
       </div>
+      {% endblock sidebar %}
 
-
-      
-      <article class="ui ten wide column" id="content">
-        <div class="ui grid">
-          <div class="row">
-
-            <div class="eight wide column">
-              <h1 class="ui header">{{ dataview.collection.name }} : {{ dataview.name }}</h1>
-            </div>
-            <div class="eight wide column right aligned">
-              <button class="ui button"><i class="edit icon"></i> Edit Fields</button>
-              <button class="ui button primary"><i class="edit icon"></i> Add Entry</button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <table class="ui basic table">
-                <thead>
-                  <tr>
-                    {% for field in dataview.fields_set.all %}
-                      <th>{{ field.name }}</th>
-                    {% endfor %}
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for data in dataview.collection.data_set.all %}
-                    <tr>
-                      {% for field in dataview.fields_set.all %}
-                        <td>{{ data.json|getitem:field }}</td>
-                      {% endfor %}
-                    </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-
-
-              <button class="ui button primary"><i class="edit icon"></i> Add Entry</button>
-
-              <div class="pull right">
-
-                <div class="ui pagination menu">
-                  <a class="active item">
-                    1
-                  </a>
-                  <div class="disabled item">
-                    ...
-                  </div>
-                  <a class="item">
-                    10
-                  </a>
-                  <a class="item">
-                    11
-                  </a>
-                  <a class="item">
-                    12
-                  </a>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </article>
+      {% block content %}
+      {% endblock content %}
 
 
     </div>
   </div>
 
-
-  <div class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Profile Picture
-  </div>
-  <div class="image content">
-    
-    <div class="description">
-      <div class="ui header">We've auto-chosen a profile image for you.</div>
-      <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-      <p>Is it okay to use this photo?</p>
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
-      Nope
-    </div>
-    <div class="ui positive right labeled icon button">
-      Yep, that's me
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
-</div>
-
-
+  {% endblock grid %}
 
 <!--        
-        <script>
+  <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -161,9 +78,8 @@
   crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
 
-<script>
-$("#addField")
-</script>
+{% block extrajs %}
+{% endblock %}
 
     </body>
 </html>

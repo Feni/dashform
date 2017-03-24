@@ -1,1 +1,68 @@
 {% extends "base.html" %}
+{% load datautils %}
+
+{% block content %}
+  <article class="ui ten wide column" id="content">
+    <div class="ui grid">
+      <div class="row">
+
+        <div class="eight wide column">
+          <h1 class="ui header">{{ dataview.collection.name }} : {{ dataview.name }}</h1>
+        </div>
+        <div class="eight wide column right aligned">
+          <button class="ui button"><i class="edit icon"></i> Edit Fields</button>
+          <button class="ui button primary"><i class="edit icon"></i> Add Entry</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <table class="ui basic table">
+            <thead>
+              <tr>
+                {% for field in dataview.fields_set.all %}
+                  <th>{{ field.name }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in dataview.collection.data_set.all %}
+                <tr>
+                  {% for field in dataview.fields_set.all %}
+                    <td>{{ data.json|getitem:field }}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+          <button class="ui button primary"><i class="edit icon"></i> Add Entry</button>
+
+          <div class="pull right">
+
+            <div class="ui pagination menu">
+              <a class="active item">
+                1
+              </a>
+              <div class="disabled item">
+                ...
+              </div>
+              <a class="item">
+                10
+              </a>
+              <a class="item">
+                11
+              </a>
+              <a class="item">
+                12
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </article>
+{% endblock %}
