@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from dashformapp import views
+from dashformapp.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', views.hello, name='hello'),
-    url(r'^api/fields', views.addField, name='addField'),
+    url(r'^$', hello, name='hello'),
+
+    url(r'^(?P<dataview_id>[-\w]+)$', DataViewDetail.as_view()),
+    url(r'^(?P<dataview_id>[-\w]+)/add$', DataViewAdd.as_view()),
     
 ]

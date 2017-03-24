@@ -20,7 +20,12 @@
             <thead>
               <tr>
                 {% for field in dataview.fields_set.all %}
-                  <th>{{ field.name }}</th>
+                  <th id="field-{{ field.id }}">
+					{{ field.name }}
+
+					<i class="edit icon pull right"></i>
+                  </th>
+
                 {% endfor %}
               </tr>
             </thead>
@@ -28,7 +33,7 @@
               {% for data in dataview.collection.data_set.all %}
                 <tr>
                   {% for field in dataview.fields_set.all %}
-                    <td>{{ data.json|getitem:field }}</td>
+                    <td>{{ data.json|getitem:field.id }}</td>
                   {% endfor %}
                 </tr>
               {% endfor %}

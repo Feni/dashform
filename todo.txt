@@ -1,0 +1,20 @@
+Editable fields - add and remove fields
+Store rows by field id instead of field name
+Ability to add entries
+View and edit individual rows
+Filtering by field values (views)
+Set value at field level
+Computed expressions
+Group by
+
+
+Questions: 
+Typed vs untypes
+	- Typed - One extra step on creation, more freedom on usage, can give special UI by type
+	- Untyped: Simpler UI
+Filtering
+Views
+
+
+Notes:
+Don't let not knowing how the UI should look deter you from implementing it. Implement atleast the functionality and then you can iterate on the bits you don't know later. 
