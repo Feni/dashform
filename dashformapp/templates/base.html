@@ -39,11 +39,10 @@
       {% block sidebar %}
       <div class="ui four wide column" id="sidebar">
         <div class="ui large vertical menu">
-          <a class="item" href="#">Table 1</a>
-          <a class="item" href="#">Table 2</a>
-          <a class="item" href="#">Table 3</a>
-          <a class="item" href="#">Table 4</a>
-          <a class="item" href="#">Table 5</a>
+            {% for table in tables %}
+                <a class="item" href="/{{ table.id }}">{{ table.name }}</a>
+            {% endfor %}
+
         </div>
       </div>
       {% endblock sidebar %}

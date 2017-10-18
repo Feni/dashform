@@ -6,47 +6,46 @@ from django.shortcuts import *
 from .models import *
 from .forms import *
 
-class CollectionContext(ContextMixin):
-    def get_collection(self):
-        if not hasattr(self, "_collection"):
-            # self._collection = Collections.objects.get(id=self.kwargs["collection_id"])
-            self._collection = Collections.objects.first()
-        return self._collection
 
+class ApplicationContext(ContextMixin):
     def get_context_data(self, **kwargs):
-        context = super(CollectionContext, self).get_context_data(**kwargs)
-        context["collection"] = self.get_collection()
+        context = super(ApplicationContext, self).get_context_data(**kwargs)
+        context['tables'] = DashTable.objects.all()
         return context
 
 
-class DataViewContext(ContextMixin):
-    def get_dataview(self):
-        if not hasattr(self, "_dataview"):
-            self._dataview = DataViews.objects.first()
-        return self._dataview
+class TableContext(ApplicationContext, ContextMixin):
+    def get_table(self):
+        if not hasattr(self, "_table"):
+            self._table = DashTable.objects.get(id=self.kwargs['table_id'])
+        return self._table
 
     def get_context_data(self, **kwargs):
-        context = super(DataViewContext, self).get_context_data(**kwargs)
-        context["dataview"] = self.get_dataview()
+        context = super(TableContext, self).get_context_data(**kwargs)
+        context["table"] = self.get_table()
         return context
-
 
 
 # Create your views here.
 def hello(request):
-    dataview = DataViews.objects.first()
-    return render(request, 'index.html', {'dataview': dataview})
+    return redirect('/create')
 
-class DataViewDetail(CollectionContext, DataViewContext, DetailView):
-    model = DataViews
-    pk_url_kwarg = 'dataview_id'
+class DashTableView(TableContext, DetailView):
+    model = DashTable
+    pk_url_kwarg = 'table_id'
 
-class DataViewAdd(CollectionContext, DataViewContext, FormView):
+
+class CreateTableView(ApplicationContext, CreateView):
+    model = DashTable
+    fields = ["name"]
+
+
+class DataViewAdd(TableContext, FormView):
     template_name = 'dashformapp/dataviews_form.html'
 
     def get_fields(self):
         # return list(self.get_dataview().fields_set.all().values_list("name", flat=True))
-        return list(self.get_dataview().fields_set.all())
+        return list(self.get_table().fields_set.all())
 
     def get_form(self, form_class=None):
         print "get form "
@@ -72,6 +71,6 @@ class DataViewAdd(CollectionContext, DataViewContext, FormView):
         print "Form valid " + str(form)
         json_form = self.form_to_json(form)
         collection = self.get_collection()
-        newrow = Data(collection=collection, json=json_form)
+        newrow = DashEntry(collection=collection, json=json_form)
         newrow.save()
         return redirect("/")

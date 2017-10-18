@@ -1,22 +1,18 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
 
-# Create your models here.
-class Collections(models.Model):
+
+class DashTable(models.Model):
     name = models.CharField(max_length=60)
 
     def __unicode__(self):
         return self.name
 
-# Essentially a table - a view into a slice of data
-class DataViews(models.Model):
-    name = models.CharField(max_length=60)    
-    collection = models.ForeignKey("Collections")
+    def get_absolute_url(self):
+        return "/%d" % (self.id)
 
-    def __unicode__(self):
-        return self.name
 
-class Fields(models.Model):
+class DashField(models.Model):
     TYPE_BOOLEAN = "BOOL"
     TYPE_NUMBER = "NUM"
     TYPE_TEXT = "TXT"
@@ -29,13 +25,15 @@ class Fields(models.Model):
 
     name = models.CharField(max_length=60)
     datatype = models.CharField(choices=CHOICES_TYPE, max_length=10)
-    view = models.ForeignKey("DataViews")
-    hidden = models.BooleanField(default=False)
+    table = models.ForeignKey("DashTable")
 
     def __unicode__(self):
         return self.name
 
 
-class Data(models.Model):
-    collection = models.ForeignKey("Collections")
+class DashEntry(models.Model):
+    table = models.ForeignKey("DashTable")
     json = JSONField()
+
+    def get_absolute_url(self):
+        return "/%d/%d" % (self.table.id, self.id)

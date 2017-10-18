@@ -21,7 +21,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', hello, name='hello'),
 
-    url(r'^(?P<dataview_id>[-\w]+)$', DataViewDetail.as_view()),
-    url(r'^(?P<dataview_id>[-\w]+)/add$', DataViewAdd.as_view()),
+    url(r'^create$', CreateTableView.as_view()),
+    url(r'^(?P<table_id>[-\w]+)$', DashTableView.as_view()),
+    url(r'^(?P<table_id>[-\w]+)/add$', DataViewAdd.as_view()),
     
 ]
