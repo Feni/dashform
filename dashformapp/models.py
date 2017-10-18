@@ -35,6 +35,7 @@ class Fields(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Data(models.Model):
     collection = models.ForeignKey("Collections")
     json = JSONField()

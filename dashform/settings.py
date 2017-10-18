@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dashform',
         'USER': 'dashuser',
-        'PASSWORD': os.environ['pgdashkey'],
+        'PASSWORD': 'formdash9',
         'HOST': 'localhost',
         'PORT': '',
 

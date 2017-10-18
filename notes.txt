@@ -1,0 +1,30 @@
+Structure
+	- New Application
+		- Application as top level
+	Sidebar is full of tables
+	- New Table
+		- Edit schema
+			- Add field
+			- Edit field
+			- Remove field
+
+		Right now the only definition is the field type. Nothing else. 
+		Text. Number. 
+			What about other types like percent, dollars, etc? Short text vs long text.
+		- Manage data
+			- Add data
+			- Edit data
+			- Remove data
+
+I'll skip the application level right now and add that in later. 
+
+
+/library (application)
+	/books - view list of books
+		/add - add a book
+		/edit - edit fields
+		/edit/add - add a field
+		/bookid - view a particular book
+			/edit - edit that book
+
+

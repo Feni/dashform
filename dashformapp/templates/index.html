@@ -10,8 +10,8 @@
           <h1 class="ui header">{{ dataview.collection.name }} : {{ dataview.name }}</h1>
         </div>
         <div class="eight wide column right aligned">
-          <button class="ui button"><i class="edit icon"></i> Edit Fields</button>
-          <button class="ui button primary"><i class="edit icon"></i> Add Entry</button>
+          <a href="{{ dataview.url }}/edit"><button class="ui button"><i class="edit icon"></i> Edit Fields</button></a>
+          <a href="{{ dataview.url }}/add"><button class="ui button primary"><i class="edit icon"></i> Add Entry</button></a>
         </div>
       </div>
       <div class="row">
@@ -25,7 +25,6 @@
 
 					<i class="edit icon pull right"></i>
                   </th>
-
                 {% endfor %}
               </tr>
             </thead>
