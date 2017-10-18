@@ -88,4 +88,4 @@ class DataViewAdd(TableContext, FormView):
         table = self.get_table()
         newrow = DashEntry(table=table, json=json_form)
         newrow.save()
-        return redirect("/")
+        return redirect(table.get_absolute_url())
