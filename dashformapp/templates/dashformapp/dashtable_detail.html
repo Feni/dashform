@@ -10,7 +10,7 @@
           <h1 class="ui header">{{ table.name }}</h1>
         </div>
         <div class="eight wide column right aligned">
-          <a href="{{ table.get_absolute_url }}/edit"><button class="ui button"><i class="edit icon"></i> Edit Fields</button></a>
+          <a href="{{ table.get_absolute_url }}/edit/new"><button class="ui button"><i class="edit icon"></i> Edit Fields</button></a>
           <a href="{{ table.get_absolute_url }}/add"><button class="ui button primary"><i class="edit icon"></i> Add Entry</button></a>
         </div>
       </div>
@@ -19,7 +19,7 @@
           <table class="ui basic table">
             <thead>
               <tr>
-                {% for field in dataview.fields_set.all %}
+                {% for field in table.dashfield_set.all %}
                   <th id="field-{{ field.id }}">
 					{{ field.name }}
 
@@ -29,9 +29,9 @@
               </tr>
             </thead>
             <tbody>
-              {% for data in dataview.collection.data_set.all %}
+              {% for data in table.dashentry_set.all %}
                 <tr>
-                  {% for field in dataview.fields_set.all %}
+                  {% for field in table.dashfield_set.all %}
                     <td>{{ data.json|getitem:field.id }}</td>
                   {% endfor %}
                 </tr>

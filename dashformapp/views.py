@@ -25,10 +25,22 @@ class TableContext(ApplicationContext, ContextMixin):
         context["table"] = self.get_table()
         return context
 
+class TableForm(FormView):
+
+    def get_success_url(self):
+        return self.get_table().get_absolute_url()
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.table = self.get_table()
+        obj.save()
+        return HttpResponseRedirect(self.get_success_url())
+
 
 # Create your views here.
 def hello(request):
     return redirect('/create')
+
 
 class DashTableView(TableContext, DetailView):
     model = DashTable
@@ -39,13 +51,16 @@ class CreateTableView(ApplicationContext, CreateView):
     model = DashTable
     fields = ["name"]
 
+class CreateFieldView(TableContext, TableForm, CreateView):
+    model = DashField
+    fields = ["name", "datatype"]
 
 class DataViewAdd(TableContext, FormView):
     template_name = 'dashformapp/dataviews_form.html'
 
     def get_fields(self):
         # return list(self.get_dataview().fields_set.all().values_list("name", flat=True))
-        return list(self.get_table().fields_set.all())
+        return list(self.get_table().dashfield_set.all())
 
     def get_form(self, form_class=None):
         print "get form "
@@ -70,7 +85,7 @@ class DataViewAdd(TableContext, FormView):
     def form_valid(self, form):
         print "Form valid " + str(form)
         json_form = self.form_to_json(form)
-        collection = self.get_collection()
-        newrow = DashEntry(collection=collection, json=json_form)
+        table = self.get_table()
+        newrow = DashEntry(table=table, json=json_form)
         newrow.save()
         return redirect("/")

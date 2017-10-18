@@ -1,10 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.errors }}
-    {{ form.as_p }}
-    <input type="submit" class="ui primary button" value="Create Entry"/>
-</form>
+    {% with submit_label="Create Entry" %}
+        {% include "_form.html" %}
+    {% endwith %}
 {% endblock %}
